@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <Router>
+    <Router basename={import.meta.env.DEV ? '/' : '/rs_flex_sinage/'}>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
