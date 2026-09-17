@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Layout from './components/layout/Layout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
@@ -33,7 +35,7 @@ function App() {
   }, []);
 
   return (
-    <Router basename={import.meta.env.DEV ? '/' : '/rs_flex_sinage/'}>
+    <Router>
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
