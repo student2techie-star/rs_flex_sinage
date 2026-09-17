@@ -1,0 +1,128 @@
+.services {
+  background-color: var(--bg-color);
+  position: relative;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.service-row {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  transition: padding 0.4s ease, background-color 0.4s ease;
+  cursor: pointer;
+}
+
+.service-row:first-child {
+  border-top: 1px solid var(--border-color);
+}
+
+.service-number {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  width: 10%;
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.service-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.service-title {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+  transition: transform 0.4s ease;
+}
+
+.service-desc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  margin-top: 0;
+}
+
+.service-icon {
+  width: 10%;
+  display: flex;
+  justify-content: flex-end;
+  color: var(--text-secondary);
+}
+
+.service-icon svg {
+  transition: transform 0.4s ease, color 0.4s ease;
+}
+
+/* Hover effects */
+@media (pointer: fine) {
+  .service-row:hover {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+
+  .service-row:hover .service-number {
+    transform: translateX(20px);
+    color: var(--accent-color);
+  }
+
+  .service-row:hover .service-title {
+    transform: translateX(10px);
+  }
+
+  .service-row:hover .service-desc {
+    height: 60px;
+    opacity: 1;
+    margin-top: 1rem;
+    transform: translateX(10px);
+  }
+
+  .service-row:hover .service-icon svg {
+    transform: rotate(-45deg) scale(1.2);
+    color: var(--accent-color);
+  }
+}
+
+/* Mobile Fallback */
+@media (max-width: 768px) {
+  .service-row {
+    flex-wrap: wrap;
+    padding: 2rem 0;
+  }
+  
+  .service-number {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .service-desc {
+    height: auto;
+    opacity: 1;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .service-title {
+    font-size: 1.8rem;
+  }
+  
+  .service-icon {
+    display: none;
+  }
+}

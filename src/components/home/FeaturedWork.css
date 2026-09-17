@@ -1,0 +1,73 @@
+.featured-work {
+  background-color: var(--bg-color);
+  position: relative;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.work-grid-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-img-container {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.work-img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #1a1a1a, #111111);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.placeholder-text {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.work-grid-item:hover .work-img-placeholder {
+  transform: scale(1.05);
+}
+
+.work-info {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-info h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.work-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}

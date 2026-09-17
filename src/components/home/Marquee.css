@@ -1,0 +1,74 @@
+.marquee-section {
+  padding: 4rem 0;
+  overflow: hidden;
+  background-color: var(--accent-color);
+  color: #fff;
+  transform: rotate(-2deg) scale(1.05);
+  margin: 3rem 0;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Traffic / Hazard Stripes on Top and Bottom */
+.marquee-section::before,
+.marquee-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: repeating-linear-gradient(
+    45deg,
+    #000,
+    #000 15px,
+    var(--accent-color) 15px,
+    var(--accent-color) 30px
+  );
+  z-index: 10;
+}
+
+.marquee-section::before {
+  top: 0;
+  border-bottom: 2px solid #000;
+}
+
+.marquee-section::after {
+  bottom: 0;
+  border-top: 2px solid #000;
+}
+
+.marquee-container {
+  display: flex;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  /* If GSAP is doing the animation, xPercent manages translation, otherwise CSS fallback */
+}
+
+.marquee-content span {
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0 1rem;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 768px) {
+  .marquee-section {
+    transform: none;
+    margin: 0;
+    padding: 2rem 0;
+  }
+  
+  .marquee-content {
+    animation: marquee-scroll 15s linear infinite;
+  }
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
