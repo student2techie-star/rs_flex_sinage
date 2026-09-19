@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,6 +16,26 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <header className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
@@ -24,8 +46,8 @@ const Navbar = () => {
         
         <nav className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-          <a href="/#services" onClick={() => setMobileMenuOpen(false)}>Services</a>
-          <a href="/#work" onClick={() => setMobileMenuOpen(false)}>Work</a>
+          <a href="#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a>
+          <a href="#work" onClick={(e) => handleNavClick(e, 'work')}>Work</a>
           <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
         </nav>
 
